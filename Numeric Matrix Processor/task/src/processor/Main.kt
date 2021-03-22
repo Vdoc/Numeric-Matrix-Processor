@@ -23,7 +23,7 @@ class NumericProcessor {
         try {
             val matrix: Matrix = when (answer) {
                 1 -> createMatrix(1).add(createMatrix(2))
-                2 -> createMatrix(0).multiply()
+                2 -> createMatrix().multiply()
                 3 -> createMatrix(1).multiply(createMatrix(2))
                 else -> {
                     exit = true
@@ -42,7 +42,7 @@ class NumericProcessor {
     private fun createMatrix(count: Int = 0): Matrix {
         var word = ""
         when (count) {
-            1 ->  word = " first"
+            1 -> word = " first"
             2 -> word = " second"
         }
         print("Enter size of$word matrix: ")
@@ -60,11 +60,11 @@ class Matrix {
     var matrix: Array<DoubleArray> = emptyArray()
     var lines: Array<String> = emptyArray()
     var line: String = ""
-    var num: Double = 0.0
+    var number: Double = 0.0
     var isDoublesHere: Boolean
 
-    constructor (rows: Int, cols: Int, usersInput: Boolean = false, doublesHere: Boolean = false) {
-        width = cols
+    constructor (rows: Int, columns: Int, usersInput: Boolean = false, doublesHere: Boolean = false) {
+        width = columns
         height = rows
         matrix = Array(height) { DoubleArray(width) }
         isDoublesHere = doublesHere
@@ -101,8 +101,8 @@ class Matrix {
         var newMatrix: Matrix = Matrix(height, width,false, isDoublesHere)
         for (_Y in 0 until height) {
             for (_X in 0 until width) {
-                num = getElenent(_Y, _X) + otherMatrix.getElenent(_Y, _X)
-                newMatrix.setElement(_Y, _X, num)
+                number = getElenent(_Y, _X) + otherMatrix.getElenent(_Y, _X)
+                newMatrix.setElement(_Y, _X, number)
             }
         }
         return newMatrix
@@ -115,7 +115,8 @@ class Matrix {
         var newMatrix: Matrix = Matrix(height, width, false, isDoublesHere)
         for (_Y in 0 until height) {
             for (_X in 0 until width) {
-                newMatrix.setElement(_Y, _X, getElenent(_Y, _X) * constant)
+                number = getElenent(_Y, _X) * constant
+                newMatrix.setElement(_Y, _X, number)
             }
         }
         return newMatrix
@@ -127,7 +128,8 @@ class Matrix {
         val newMatrix: Matrix = Matrix(height, otherMatrix.width, false, isDoublesHere)
         for (_Y in 0 until height) {
             for (_X in 0 until otherMatrix.width) {
-                newMatrix.setElement(_Y, _X, multiplyElements(_Y, _X, otherMatrix))
+                number = multiplyElements(_Y, _X, otherMatrix)
+                newMatrix.setElement(_Y, _X, number)
             }
         }
         return newMatrix
