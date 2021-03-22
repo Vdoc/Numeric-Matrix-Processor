@@ -6,10 +6,11 @@ val scanner = Scanner(System.`in`)
 
 fun main() {
     val m1 = Matrix(scanner.nextInt(), scanner.nextInt(), true)
-    val m2 = Matrix(scanner.nextInt(), scanner.nextInt(), true)
+//    val m2 = Matrix(scanner.nextInt(), scanner.nextInt(), true)
 
     try {
-        val m3 = m1.sum(m2)
+//        val m3 = m1.sum(m2)
+        val m3 = m1.multiply(scanner.nextInt())
         m3.print()
     } catch (e: Error) {
         println("ERROR")
@@ -62,6 +63,16 @@ class Matrix {
             output += "\n"
         }
         print(output)
+    }
+
+    fun multiply(constant: Int): Matrix {
+        val m3 = Matrix(height, width)
+        for (_Y in 0 until height) {
+            for (_X in 0 until width) {
+                m3.setElement(_Y, _X, getElenent(_Y, _X) * constant)
+            }
+        }
+        return m3
     }
 
 }
